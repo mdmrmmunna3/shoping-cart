@@ -23,21 +23,24 @@ function updateCaseNumber (isIncrease) {
     caseNumberField.value = caseNewNumber;
     return caseNewNumber;
 }
-document.getElementById('btn-case-plus').addEventListener('click', function(){
-    const newCaseNumber = updateCaseNumber(true);
+
+
+function updateCaseTotalPrice (newCaseNumber) {
     const newCaseTotalPrice = newCaseNumber * 59;
     const caseTotalElement = document.getElementById('case-total');
     const totalElement = caseTotalElement.innerText;
     caseTotalElement.innerText = newCaseTotalPrice;
+}
+document.getElementById('btn-case-plus').addEventListener('click', function(){
+    const newCaseNumber = updateCaseNumber(true);
+
+     updateCaseTotalPrice(); // call na korle o output pawajay
 })
 
 document.getElementById('btn-case-minus').addEventListener('click' , function(){
     const newCaseNumber = updateCaseNumber(false);
-   const newCaseTotalPrice = newCaseNumber * 59;
-//    const updateCaseTotalPrice = newCaseTotalPrice / 59 ;
-    const caseTotalElement = document.getElementById('case-total');
-    const totalElement = caseTotalElement.innerText;
-    caseTotalElement.innerText = newCaseTotalPrice;
+    
+    updateCaseTotalPrice(); // call na korle o output pawajay
 })
 
 
